@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
 
-<title>Jin's Math</title>
+<title>껒영</title>
 </head>
 <body>
 	
@@ -37,8 +37,8 @@
 			<div class="bodyLeft">
 
 				
-
-					<div th:if="${session.m_id != null}" id="login">
+				<!-- th:if="${session.m_id != null}" id="login" -->
+					<div >
 
 						<div> 
 							아이디 : <input type="text" id="userID" name="userID">
@@ -48,23 +48,29 @@
 							비밀번호 :  <input type="password" id="userPW" name="userPW">
 						</div>
 						
-						<button type="submit" id="login" name="login">
-							로그인
-						</button>
+					<form action="login" method="post" id="loginForm" name="loginForm">
+						<input type="submit" id="login" name="login" value="로그인">
+						
+					</form>	
 
-						<button id="regist" name="regist" onclick="location.href='/regist'">
+						<button type="button" id="registBtn" name="registBtn" onclick="location.href='/regist'">
 							회원가입
-
 						</button>
+
+					
+						
+						
+						
 					</div>
 
-					<div th:if="${session.c_id != null && session.c_id != 'admin'}" >
+					<!-- th:if="${session.c_id != null && session.c_id != 'admin'}" id="login" -->
+					<!-- <div >
 
 						<div>
 							[[${session.c_id}]]님, 환영합니다.
 						</div>
 
-					</div>
+					</div> -->
 
 
 

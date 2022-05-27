@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>회원가입</title>
 </head>
 <body>
 
@@ -13,8 +13,8 @@
         <a href="/"> Jin's Math </a>
     </div>
 
-    <form action="Regist">
-     <div id="registForm">
+<form action="/regist" method="post" id="registForm">
+     
         <div id="userInfo">
             <div>
                 <h3>아이디</h3> 
@@ -42,8 +42,8 @@
                 
             <div>
                 <span id="gradeBox">
-                    <select name="stuClass" id="stuClass" aria-label="학년">
-                        <option value> 학년 </option>
+                    <select name="m_grade" id="m_grade" aria-label="학년">
+                        <option> 학년 </option>
                         <option value="E1"> 초1 </option>
                         <option value="E2">초2</option>
                         <option value="E3">초3</option>
@@ -60,11 +60,12 @@
                 </span>
             </div>
         </div>
-    </div>   
 
-    <div>
-        <button id="registAgree"> 가입하기 </button>
-    </div>
+        <input type="submit" id="registAgree" name="registAgree" value="가입하기">
+
 </form>
+
+
+
 </body>
 </html>

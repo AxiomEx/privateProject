@@ -20,6 +20,12 @@ public class MainController {
 	public String student(){
 		return "/student";
 	}
+	
+	@GetMapping("/regist")
+	public String regist(){
+        System.out.println("aaaa");
+		return "regist";
+	}
 
 	
 

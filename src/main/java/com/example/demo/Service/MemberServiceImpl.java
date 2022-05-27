@@ -4,7 +4,9 @@ import com.example.demo.Model.MemberDTO;
 import com.example.demo.mapper.MemberMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MemberServiceImpl implements MemberService{
     
     @Autowired
@@ -14,5 +16,17 @@ public class MemberServiceImpl implements MemberService{
     public void memberInsert(MemberDTO dto){
         mapper.memberInsert(dto);
     }
+
+	@Override
+	public int login(MemberDTO dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public MemberDTO memberRead(String m_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
