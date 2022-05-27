@@ -1,0 +1,8 @@
+#studentDrop{
+    display: none;
+}
+
+.headerMenu > li:hover > #studentDrop{
+    display: block;
+}
+

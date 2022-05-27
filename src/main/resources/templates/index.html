@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+
+<title>Jin's Math</title>
+</head>
+<body>
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+	<div class="container">
+		<div class="header">
+			<div id="Logo">
+				<a href="/"> 껒여 </a>
+			</div>
+
+			<div class="headerMenu">
+				<ul>
+					<li> <a href="announce"> 공지사항 </a></li>
+					<li> <a href="student">학생관리 </a></li>
+					<li> <a href="graph">그래프 그리기 </a></li>
+					<li> <a href="#">자유게시판 </a></li>
+					<li> <a href="#">Q&A </a></li>
+					<li> <a href="#">고객센터 </a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="body">
+			
+			<div class="bodyLeft">
+
+				
+
+					<div th:if="${session.m_id != null}" id="login">
+
+						<div> 
+							아이디 : <input type="text" id="userID" name="userID">
+						</div>
+
+						<div>
+							비밀번호 :  <input type="password" id="userPW" name="userPW">
+						</div>
+						
+						<button type="submit" id="login" name="login">
+							로그인
+						</button>
+
+						<button id="regist" name="regist" onclick="location.href='/regist'">
+							회원가입
+
+						</button>
+					</div>
+
+					<div th:if="${session.c_id != null && session.c_id != 'admin'}" >
+
+						<div>
+							[[${session.c_id}]]님, 환영합니다.
+						</div>
+
+					</div>
+
+
+
+
+
+
+				
+
+				<hr>
+
+			<div id="chatBox">
+
+				<!-- <div id="chat" >
+
+				</div> -->
+
+
+				<div class="container">
+					<div class="col-6">
+						<label ><b id="chatRoom"> <채팅방> </b></label>
+					</div>
+					<div>
+						<div id="msgArea" class="col"></div>
+						<div class="col-6">
+							<div class="input-group mb-3">
+								<input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+								<div class="input-group-append">
+									<button class="btn btn-outline-secondary" type="button" id="button-send">
+										전송
+									</button>
+
+									<button type="button" id="clean" onclick="clearText1();">Clean</button>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			</div>
+
+			<div class="bodyRight">
+
+				<div id="main_announce">
+					공지사항
+
+				</div>
+
+
+				<div id="main_board">
+					자유게시판
+
+				</div>
+
+
+				<div id="main_qa">
+					Q&A
+
+				</div>
+
+				
+
+				
+			</div>
+		</div>
+
+		<div class="footer">
+
+			문의 : 메일
+		</div>
+	
+</div>
+
+<!-- <script>
+$(document).ready(function(){
+	$("#chat").load("http://localhost:8080/chat");
+	});
+</script> -->
+
+<script>
+// 채팅창 내용 지우기
+function clearText1() {
+			$('#msgArea').text('');
+				// console.log(messages.parentNode);
+				// messages.parentNode.removeChild(messages)
+			}
+
+</script>
+
+<script th:inline="javascript">
+	$(document).ready(function(){
+
+		const username = 'tester';
+
+		$("#disconn").on("click", (e) => {
+			disconnect();
+		})
+		
+		$("#button-send").on("click", (e) => {
+			send();
+		});
+
+		const websocket = new WebSocket("ws://localhost:8080/ws/chat");
+
+		websocket.onmessage = onMessage;
+		websocket.onopen = onOpen;
+		websocket.onclose = onClose;
+
+		function send(){
+
+			let msg = document.getElementById("msg");
+			
+			console.log(username + ":" + msg.value);
+			
+			websocket.send(username + ":" + msg.value);
+			
+			msg.value = '';
+		}
+		
+		//채팅창에서 나갔을 때
+		function onClose(evt) {
+			var str = username + ": 님이 방을 나가셨습니다.";
+			websocket.send(str);
+		}
+		
+		//채팅창에 들어왔을 때
+		function onOpen(evt) {
+			var str = username + ": 님이 입장하셨습니다.";
+			websocket.send(str);
+		}
+
+		function onMessage(msg) {
+			var data = msg.data;
+			var sessionId = null;
+			//데이터를 보낸 사람
+			var message = null;
+			var arr = data.split(":");
+
+			for(var i=0; i<arr.length; i++){
+				console.log('arr[' + i + ']: ' + arr[i]);
+			}
+
+			var cur_session = username;
+
+			//현재 세션에 로그인 한 사람
+			console.log("cur_session : " + cur_session);
+			sessionId = arr[0];
+			message = arr[1];
+
+			console.log("sessionID : " + sessionId);
+			console.log("cur_session : " + cur_session);
+
+			//로그인 한 클라이언트와 타 클라이언트를 분류하기 위함
+			if(sessionId == cur_session){
+				var str = "<div class='col-6'>";
+				str += "<div class='alert alert-secondary'>";
+				str += "<b>" + sessionId + " : " + message + "</b>";
+				str += "</div></div>";
+				$("#msgArea").append(str);
+			}
+			else{
+				var str = "<div class='col-6'>";
+				str += "<div class='alert alert-warning'>";
+				str += "<b>" + sessionId + " : " + message + "</b>";
+				str += "</div></div>";
+				$("#msgArea").append(str);
+			}
+		}
+	})
+</script>
+
+</body>
+</html>

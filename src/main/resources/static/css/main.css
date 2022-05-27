@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Pen+Script&display=swap');
+
+@media screen and (max-width: 768px) {
+    
+    
+    
+
+}
+
+.input-group-append{
+    display: inline;
+    /* height: 25px; */
+}
+
+#msg{
+    width : 200px;
+    /* height: 25px; */
+}
+
+#Logo{
+    font-size: 50px;
+    background-color: rgb(133, 241, 255);
+    text-align: center;
+    font-family: 'Nanum Pen Script', cursive;
+
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.header{
+    text-align: center;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 30px;
+
+}
+
+.header, .footer{
+    border: 1px solid black;
+}
+
+.headerMenu{
+    /* height: 50px; */
+     border-top: 1px solid black;
+    border-bottom: 1px solid black; 
+}
+
+.headerMenu > ul > li{
+    list-style-type: none;
+    display: inline;
+    outline: 1px dotted red;
+    margin-left: 40px;
+    margin-right: 40px;
+    align-items: center;
+}
+
+.headerMenu > ul{
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+
+.body{
+    display: flex;
+    border: 1px solid black;
+    font-size: 14px;
+    
+}
+
+.bodyLeft, .bodyRight{
+    border: 1px solid black;
+}
+
+.bodyLeft{
+    width: 30%;
+}
+
+.bodyRight{
+    width: 70%;
+}
+
+#chat, #msgArea{
+    border: 1px solid blue;
+    overflow: scroll;
+    height: 200px;
+}
+
+#chatRoom{
+    text-align: center;
+}
+
+ /* #button-send{
+    background-image: url("../image/sent.png");
+    background-size: cover;
+}  */
+
+#button-send, #clean{
+    height: 25px;
+
+}

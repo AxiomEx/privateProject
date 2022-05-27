@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>그래프 그리기</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div id="Logo">
+                <a href="/"> Jin's Math </a>
+            </div>
+    
+            <div class="headerMenu">
+                <ul>
+                    <li> <a href="announce"> 공지사항 </a></li>
+                    <li> <a href="student">학생관리 </a></li>
+                    <li> <a href="graph">그래프 그리기 </a></li>
+                    <li> <a href="#">자유게시판 </a></li>
+                    <li> <a href="#">Q&A </a></li>
+                    <li> <a href="#">고객센터 </a></li>
+                </ul>
+            </div>
+        </div>
+
+        <script src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+
+    <div id="calculator" style="width: auto; height: 600px;"></div>
+
+    </div>
+
+
+    <script>
+        var elt = document.getElementById('calculator');
+        var calculator = Desmos.GraphingCalculator(elt);
+        calculator.setExpression({ id: 'graph1', latex: 'y=x^2' });
+      </script>
+</body>
+</html>

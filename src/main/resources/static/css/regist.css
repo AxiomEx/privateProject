@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Pen+Script&display=swap');
+
+input, #stuClass{
+    width: 90%;
+    height: 50px;
+}
+
+#Logo{
+    font-size: 50px;
+    text-align: center;
+    font-family: 'Nanum Pen Script', cursive;
+    margin-bottom: 30px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+#registAgree{
+    width: 100%;
+    height: 60px;
+    margin-top: 10px;
+}
+
+#registForm{
+    border: 2px solid black;
+    align-items: center;
+    /* display: inline-block; */
+    /* margin: 0 0 60 60 ; */
+}
+
+/* #grade, #gradeBox{
+    display: table-cell;
+    table-layout: fixed;
+    width: 147px;
+    vertical-align: middle;
+} */
+
+#grade{
+    display: block;
+}
+
+#userInfo{
+    margin: 0px ;
+}
